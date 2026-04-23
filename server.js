@@ -1,22 +1,19 @@
 const express = require('express');
-const pool = require('./db');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger');
+const tasksRouter = require('./routes/tasks');
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
 
-app.get('/', async (req, res) => {
-    try {
-        const result = await pool.query('SELECT NOW()');
-        res.json({
-            message: 'Datenbankverbindung erfolgreich!',
-            time: result.rows[0].now,
-        });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
+// Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// Routen
+app.use('/tasks', tasksRouter);
 
 app.listen(PORT, () => {
-    console.log(`Server laeuft auf http://localhost:${PORT}`);
+    console.log(`Server:    http://localhost:${PORT}`);
+    console.log(`Swagger:   http://localhost:${PORT}/api-docs`);
 });
