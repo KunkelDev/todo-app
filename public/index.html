@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Task Manager</h1>
+
+    <!-- Form -->
+    <div class="form-box">
+        <label for="titleInput">Title</label>
+        <input type="text" id="titleInput" placeholder="New task...">
+        <label for="priorityInput">Priority</label>
+        <select id="priorityInput">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+        </select>
+        <button onclick="createTask()">Add Task</button>
+    </div>
+
+    <!-- Filter & Sort -->
+    <div class="filter-box">
+        <label for="filterPriority">Filter</label>
+        <select id="filterPriority" onchange="loadTasks()">
+            <option value="">All priorities</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+        <label for="sortBy">Sort</label>
+        <select id="sortBy" onchange="loadTasks()">
+            <option value="">No sorting</option>
+            <option value="created_at">Sort by date</option>
+            <option value="priority">Sort by priority</option>
+        </select>
+    </div>
+
+    <!-- Task List -->
+    <ul id="taskList"></ul>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 {
-  "name": "todo-app",
+  "name": "task-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,16 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KunkelDev/todo-app.git"
+    "url": "git+https://github.com/KunkelDev/task-app.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/KunkelDev/todo-app/issues"
+    "url": "https://github.com/KunkelDev/task-app.git"
   },
-  "homepage": "https://github.com/KunkelDev/todo-app#readme",
+  "homepage": "https://github.com/KunkelDev/task-app.git#readme",
   "dependencies": {
     "dotenv": "^16.6.1",
     "express": "^5.2.1",
@@ -27,6 +27,9 @@
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
+    "@types/node": "^25.6.0",
+    "@types/pg": "^8.20.0",
+    "@types/supertest": "^7.2.0",
     "jest": "^30.3.0",
     "supertest": "^7.2.2"
   }
