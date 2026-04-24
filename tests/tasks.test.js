@@ -14,8 +14,16 @@ afterAll(async () => {
 
 describe('Task API', () => {
 
+    let createdId;
+
     it('GET /tasks - returns a list', async () => {
         const res = await request(app).get('/tasks');
+        expect(res.statusCode).toBe(200);
+        expect(Array.isArray(res.body)).toBe(true);
+    });
+
+    it('GET /tasks?search= - filters by title', async () => {
+        const res = await request(app).get('/tasks?search=Test');
         expect(res.statusCode).toBe(200);
         expect(Array.isArray(res.body)).toBe(true);
     });
@@ -26,6 +34,7 @@ describe('Task API', () => {
             .send({ title: 'Test task', priority: 'high' });
         expect(res.statusCode).toBe(201);
         expect(res.body.title).toBe('Test task');
+        createdId = res.body.id;
     });
 
     it('POST /tasks - fails without title', async () => {
@@ -37,14 +46,20 @@ describe('Task API', () => {
 
     it('PATCH /tasks/:id - updates a task', async () => {
         const res = await request(app)
-            .patch('/tasks/1')
+            .patch(`/tasks/${createdId}`)
             .send({ done: true });
-        expect([200, 404, 500]).toContain(res.statusCode);
+        expect(res.statusCode).toBe(200);
+        expect(res.body.done).toBe(true);
     });
 
     it('DELETE /tasks/:id - deletes a task', async () => {
-        const res = await request(app).delete('/tasks/1');
-        expect([204, 404, 500]).toContain(res.statusCode);
+        const res = await request(app).delete(`/tasks/${createdId}`);
+        expect(res.statusCode).toBe(204);
     });
 
-}); 
+    it('GET /tasks/:id - returns 404 for deleted task', async () => {
+        const res = await request(app).get(`/tasks/${createdId}`);
+        expect(res.statusCode).toBe(404);
+    });
+
+});
