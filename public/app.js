@@ -1,14 +1,16 @@
-const API = 'http://localhost:3000/tasks';
+const API = '/tasks';
 
 async function loadTasks() {
     const priority = document.getElementById('filterPriority').value;
     const sort = document.getElementById('sortBy').value;
+    const search = document.getElementById('searchInput').value;
 
-    let url = API;
     const params = new URLSearchParams();
     if (priority) params.append('priority', priority);
     if (sort) params.append('sort', sort);
-    if ([...params].length) url += '?' + params.toString();
+    if (search) params.append('search', search);
+
+    const url = params.toString() ? `${API}?${params.toString()}` : API;
 
     const res = await fetch(url);
     const tasks = await res.json();
@@ -20,13 +22,10 @@ async function loadTasks() {
         const li = document.createElement('li');
         if (task.done) li.classList.add('done');
         li.innerHTML = `
-            <input type="checkbox" ${task.done ? 'checked' : ''}
-                onchange="(async () => { await toggleDone(${task.id}, ${task.done}); })()">
-            <span>${task.title}</span>
-            <span class="badge ${task.priority}">${task.priority}</span>
-            <button class="btn-delete"
-                onclick="(async () => { await deleteTask(${task.id}); })()">Delete</button>
-        `;
+      <span onclick="toggleDone(${task.id}, ${task.done})">${task.title}</span>
+      <span class="priority">${task.priority}</span>
+      <button onclick="deleteTask(${task.id})">Delete</button>
+    `;
         list.appendChild(li);
     });
 }
@@ -34,7 +33,7 @@ async function loadTasks() {
 async function createTask() {
     const title = document.getElementById('titleInput').value.trim();
     const priority = document.getElementById('priorityInput').value;
-    if (!title) return alert('Please enter a title!');
+    if (!title) return alert('Bitte einen Titel eingeben!');
 
     await fetch(API, {
         method: 'POST',
