@@ -1,47 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task App</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
 <div class="container">
-    <h1>Task Manager</h1>
+    <h1>Task App</h1>
 
-    <!-- Form -->
+    <!-- Neuen Task erstellen -->
     <div class="form-box">
-        <label for="titleInput">Title</label>
-        <input type="text" id="titleInput" placeholder="New task...">
-        <label for="priorityInput">Priority</label>
-        <select id="priorityInput">
-            <option value="low">Low</option>
-            <option value="medium" selected>Medium</option>
-            <option value="high">High</option>
+        <input
+                type="text"
+                id="titleInput"
+                placeholder="Neuer Task..."
+                aria-label="Titel des neuen Tasks"
+        />
+        <select id="priorityInput" aria-label="Priorität auswählen">
+            <option value="low">Niedrig</option>
+            <option value="medium" selected>Mittel</option>
+            <option value="high">Hoch</option>
         </select>
-        <button onclick="createTask()">Add Task</button>
+        <button onclick="createTask()">Hinzufügen</button>
     </div>
 
-    <!-- Filter & Sort -->
+    <!-- Filter, Suche, Sortierung -->
     <div class="filter-box">
-        <label for="filterPriority">Filter</label>
-        <select id="filterPriority" onchange="loadTasks()">
-            <option value="">All priorities</option>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+        <input
+                type="text"
+                id="searchInput"
+                placeholder="Suche nach Titel..."
+                aria-label="Tasks durchsuchen"
+                oninput="loadTasks()"
+        />
+        <select id="filterPriority" aria-label="Nach Priorität filtern" onchange="loadTasks()">
+            <option value="">Alle Prioritäten</option>
+            <option value="low">Niedrig</option>
+            <option value="medium">Mittel</option>
+            <option value="high">Hoch</option>
         </select>
-        <label for="sortBy">Sort</label>
-        <select id="sortBy" onchange="loadTasks()">
-            <option value="">No sorting</option>
-            <option value="created_at">Sort by date</option>
-            <option value="priority">Sort by priority</option>
+        <select id="sortBy" aria-label="Sortierung auswählen" onchange="loadTasks()">
+            <option value="">Keine Sortierung</option>
+            <option value="created_at">Datum</option>
+            <option value="priority">Priorität</option>
         </select>
     </div>
 
-    <!-- Task List -->
+    <!-- Task-Liste -->
     <ul id="taskList"></ul>
 </div>
 

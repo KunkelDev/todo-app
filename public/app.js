@@ -22,9 +22,10 @@ async function loadTasks() {
         const li = document.createElement('li');
         if (task.done) li.classList.add('done');
         li.innerHTML = `
-      <span onclick="toggleDone(${task.id}, ${task.done})">${task.title}</span>
-      <span class="priority">${task.priority}</span>
-      <button onclick="deleteTask(${task.id})">Delete</button>
+      <span>${task.title}</span>
+      <span class="badge ${task.priority}">${task.priority}</span>
+      <button class="btn-done" onclick="toggleDone(${task.id}, ${task.done})">✓</button>
+      <button class="btn-delete" onclick="deleteTask(${task.id})">✕</button>
     `;
         list.appendChild(li);
     });

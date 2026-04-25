@@ -2,8 +2,9 @@
   "name": "task-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "jest"
   },
   "repository": {
@@ -14,10 +15,6 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/KunkelDev/task-app.git"
-  },
-  "homepage": "https://github.com/KunkelDev/task-app.git#readme",
   "dependencies": {
     "dotenv": "^16.6.1",
     "express": "^5.2.1",
