@@ -1,3 +1,7 @@
+/**
+ * Einstiegspunkt der Anwendung.
+ * Registriert Middleware, Routen und die Swagger-Dokumentation.
+ */
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
@@ -13,7 +17,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/tasks', tasksRouter);
 
 app.listen(PORT, () => {
-    console.log(`Server: http://localhost:${PORT}`);
+    console.log(`Server:  http://localhost:${PORT}`);
     console.log(`Swagger: http://localhost:${PORT}/api-docs`);
 });
 

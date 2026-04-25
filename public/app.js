@@ -1,5 +1,13 @@
+/**
+ * Frontend-Logik der Task App.
+ * Kommuniziert mit der REST-API und aktualisiert die Anzeige dynamisch.
+ */
 const API = '/tasks';
 
+/**
+ * Laedt alle Tasks von der API und rendert sie in der Liste.
+ * Beruecksichtigt aktuelle Filter-, Such- und Sortiereinstellungen.
+ */
 async function loadTasks() {
     const priority = document.getElementById('filterPriority').value;
     const sort = document.getElementById('sortBy').value;
@@ -31,6 +39,9 @@ async function loadTasks() {
     });
 }
 
+/**
+ * Liest Titel und Prioritaet aus dem Formular und erstellt einen neuen Task.
+ */
 async function createTask() {
     const title = document.getElementById('titleInput').value.trim();
     const priority = document.getElementById('priorityInput').value;
@@ -46,6 +57,11 @@ async function createTask() {
     await loadTasks();
 }
 
+/**
+ * Schaltet den Erledigungsstatus eines Tasks um.
+ * @param {number} id - ID des Tasks
+ * @param {boolean} currentDone - aktueller Status
+ */
 async function toggleDone(id, currentDone) {
     await fetch(`${API}/${id}`, {
         method: 'PATCH',
@@ -55,6 +71,10 @@ async function toggleDone(id, currentDone) {
     await loadTasks();
 }
 
+/**
+ * Loescht einen Task permanent.
+ * @param {number} id - ID des zu loeschenden Tasks
+ */
 async function deleteTask(id) {
     await fetch(`${API}/${id}`, { method: 'DELETE' });
     await loadTasks();

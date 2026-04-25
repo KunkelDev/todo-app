@@ -4,11 +4,13 @@ Eine einfache REST-API zur Aufgabenverwaltung, entwickelt mit Node.js, Express, 
 
 ## Tech-Stack
 
-- **Backend**: Node.js, Express.js
-- **Datenbank**: PostgreSQL (via Docker)
-- **API-Dokumentation**: OpenAPI 3.0 / Swagger UI
-- **Tests**: Jest, Supertest
-- **Frontend**: HTML, CSS, Vanilla JavaScript
+| Bereich | Technologie |
+|---|---|
+| Backend | Node.js, Express.js |
+| Datenbank | PostgreSQL (via Docker) |
+| API-Dokumentation | OpenAPI 3.0 / Swagger UI |
+| Tests | Jest, Supertest |
+| Frontend | HTML, CSS, Vanilla JavaScript |
 
 ## Voraussetzungen
 
@@ -21,8 +23,6 @@ Eine einfache REST-API zur Aufgabenverwaltung, entwickelt mit Node.js, Express, 
 1. Repository klonen
 
 ```bash
-git clone https://github.com/KunkelDev/task-app.git
-cd task-app
 ```
 
 2. Abhaengigkeiten installieren
@@ -37,7 +37,7 @@ npm install
 copy .env.example .env
 ```
 
-Die Datei `.env` bei Bedarf mit eigenen Werten befuellen.
+> Die Datei `.env` bei Bedarf mit eigenen Werten befuellen.
 
 ## Verwendung
 
@@ -59,31 +59,31 @@ node db-init.js
 node server.js
 ```
 
-Server laeuft unter: `http://localhost:3000`
-
-Swagger UI erreichbar unter: `http://localhost:3000/api-docs`
+> Server: `http://localhost:3000`
+> Swagger UI: `http://localhost:3000/api-docs`
 
 ## API-Endpunkte
 
-| Methode      | URL          | Beschreibung              |
-|--------------|--------------|---------------------------|
-| GET          | /tasks       | Alle Aufgaben abrufen     |
-| GET          | /tasks/:id   | Einzelne Aufgabe abrufen  |
-| POST         | /tasks       | Neue Aufgabe erstellen    |
-| PATCH        | /tasks/:id   | Aufgabe aktualisieren     |
-| DELETE       | /tasks/:id   | Aufgabe loeschen          |
+| Methode | URL | Beschreibung |
+|---|---|---|
+| GET | /tasks | Alle Aufgaben abrufen |
+| GET | /tasks/:id | Einzelne Aufgabe abrufen |
+| POST | /tasks | Neue Aufgabe erstellen |
+| PATCH | /tasks/:id | Aufgabe aktualisieren |
+| DELETE | /tasks/:id | Aufgabe loeschen |
 
 ### Abfrageparameter (GET /tasks)
 
-| Parameter  | Beschreibung              | Beispiel          |
-|------------|---------------------------|-------------------|
-| `priority` | Nach Prioritaet filtern   | `?priority=high`  |
-| `sort`     | Ergebnisse sortieren      | `?sort=created_at`|
+| Parameter | Beschreibung | Beispiel |
+|---|---|---|
+| `priority` | Nach Prioritaet filtern | `?priority=high` |
+| `sort` | Ergebnisse sortieren | `?sort=created_at` |
+| `search` | Nach Titel suchen | `?search=einkauf` |
 
 ## Tests ausfuehren
+
+> Docker muss laufen, bevor die Tests gestartet werden.
 
 ```bash
 npm test
 ```
-
-Docker muss laufen, bevor die Tests gestartet werden.

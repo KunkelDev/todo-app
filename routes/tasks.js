@@ -1,5 +1,10 @@
+/**
+ * REST-Endpunkte fuer die Task-Verwaltung.
+ * Unterstuetzt Erstellen, Lesen, Filtern, Suchen, Aktualisieren und Loeschen.
+ */
 const express = require('express');
 const router = express.Router();
+
 /** @type {import('pg').Pool} */
 const pool = require('../db');
 

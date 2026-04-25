@@ -1,3 +1,8 @@
+/**
+ * Konfiguration der OpenAPI-Dokumentation.
+ * Generiert die API-Spezifikation aus den JSDoc-Kommentaren in routes/.
+ * Erreichbar unter: http://localhost:3000/api-docs
+ */
 const swaggerJsdoc = require('swagger-jsdoc');
 
 /** @type {import('swagger-jsdoc').Options} */

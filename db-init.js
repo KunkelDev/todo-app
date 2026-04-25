@@ -1,4 +1,10 @@
+/**
+ * Initialisierungsskript fuer die Datenbank.
+ * Erstellt die tasks-Tabelle, falls sie noch nicht existiert.
+ * Ausfuehren mit: node db-init.js
+ */
 require('dotenv').config();
+
 /** @type {import('pg').Pool} */
 const pool = require('./db');
 

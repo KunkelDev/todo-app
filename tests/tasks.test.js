@@ -1,4 +1,9 @@
+/**
+ * Integrationstests fuer die Task-API.
+ * Voraussetzung: Docker muss laufen (docker compose up -d)
+ */
 require('dotenv').config();
+
 const request = require('supertest');
 const express = require('express');
 const tasksRouter = require('../routes/tasks');

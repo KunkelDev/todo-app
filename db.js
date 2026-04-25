@@ -1,3 +1,7 @@
+/**
+ * Datenbankverbindung zu PostgreSQL.
+ * Verbindungsparameter werden aus der .env-Datei gelesen.
+ */
 const dotenv = require('dotenv');
 dotenv.config();
 
